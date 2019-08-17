@@ -2,28 +2,48 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.2.1.
 
+## Features
+
+MySql Connector 
+Register user
+Login User
+Forgot Password (TODO)
+
+Bootstrap Responsive Admin Theme
+Admin Dashboard
+Left Sidebar
+Top Navbar
+
+User management i.e.
+   Users List
+   User Details
+   User Edit
+   User Add
+   User Delete
+   Users Searching, Sorting and Pagination (TODO)
+
+WYSIWYG Editors (TODO)
+File Management (TODO)
+Update Password (TODO)
+Pages Management (TODO)
+User Roles Management (TODO)
+Post Management (TODO)
+Settings Management (TODO)
+Report Management (TODO)
+CRUD Generation (TODO)
+
 ## How to install
-Copy the folder to any location in your computer
-It has two apps first Angular App and second one is ExpressJS for api. You need to install both the app and both should be running to work this demo. You also need to modify apiURL and appURL inside environments files and in env.js file as env.js file overwrites the environment files.
 
-Go to manageACL and run 
-  npm install
+Copy the folder to any location in your computer.
+It has two apps first `Angular App` and second one is `ExpressJS` for api. You need to install both the app and both should be running simultaneously to work this cms. You also need to modify apiUrl and appUrl inside environments files and in env.js file. 
+Please note env.js file overwrites the environment variables.
 
- to install its dependencies. 
-Then run 
+Go to manageACL and run `npm install` to install its dependencies. 
+Then run `ng serve`.
+Then Open another terminal and Go to the api and run `npm install` then run the command
+`node server.js`
 
-  ng serve
-
-Then Open another terminal and Go to api and run
-
-   npm install
-
-then run the command
-
-   node server.js
-
-
-
+That's it.
 
 ## Development server
 
@@ -31,7 +51,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 ## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `ng generate component component-name` or `ng g c component-name --no-spec` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
