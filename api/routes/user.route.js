@@ -1,5 +1,5 @@
-const express = require('express');
-const router = express.Router();
+var express = require('express');
+var router = express.Router();
 var bcrypt = require('bcryptjs');
 var mysql = require('../config/mysql');
 
