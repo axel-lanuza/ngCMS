@@ -4,33 +4,30 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Features
 
-MySql Connector 
-Register user
-Login User
-Forgot Password (TODO)
-
-Bootstrap Responsive Admin Theme
-Admin Dashboard
-Left Sidebar
-Top Navbar
-
-User management i.e.
-   Users List
-   User Details
-   User Edit
-   User Add
-   User Delete
-   Users Searching, Sorting and Pagination (TODO)
-
-WYSIWYG Editors (TODO)
-File Management (TODO)
-Update Password (TODO)
-Pages Management (TODO)
-User Roles Management (TODO)
-Post Management (TODO)
-Settings Management (TODO)
-Report Management (TODO)
-CRUD Generation (TODO)
+- MySql Connector 
+- Register user
+- Login User
+- Forgot Password (TODO)
+- Bootstrap Responsive Admin Theme
+- Admin Dashboard
+- Left Sidebar
+- Top Navbar
+- User management i.e.
+   - Users List
+   - User Details
+   - User Edit
+   - User Add
+   - User Delete
+   - Users Searching, Sorting and Pagination (TODO)
+- WYSIWYG Editors (TODO)
+- File Management (TODO)
+- Update Password (TODO)
+- Pages Management (TODO)
+- User Roles Management (TODO)
+- Post Management (TODO)
+- Settings Management (TODO)
+- Report Management (TODO)
+- CRUD Generation (TODO)
 
 ## How to install
 
