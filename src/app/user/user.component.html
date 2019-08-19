@@ -20,10 +20,10 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>Name</th>
-                      <th>Email</th>
-                      <th>Status</th>
-                      <th>Added On</th>
+                      <th [ngClass]="{'sorting sorting_asc': orderBy=='users.name' && order == 'ASC', 'sorting sorting_desc': orderBy=='users.name' && order == 'DESC', 'sorting': orderBy!='users.name' }" (click)="sortData('users.name')">Name</th>
+                      <th [ngClass]="{'sorting sorting_asc': orderBy=='users.email' && order == 'ASC', 'sorting sorting_desc': orderBy=='users.email' && order == 'DESC', 'sorting': orderBy!='users.email' }" (click)="sortData('users.email')">Email</th>
+                      <th [ngClass]="{'sorting sorting_asc': orderBy=='users.status' && order == 'ASC', 'sorting sorting_desc': orderBy=='users.status' && order == 'DESC', 'sorting': orderBy!='users.status' }" (click)="sortData('users.status')">Status</th>
+                      <th [ngClass]="{'sorting sorting_asc': orderBy=='users.created_at' && order == 'ASC', 'sorting sorting_desc': orderBy=='users.created_at' && order == 'DESC', 'sorting': orderBy!='users.created_at' }" (click)="sortData('users.created_at')">Added On</th>
                       <th>#</th>
                     </tr>
                   </thead>
@@ -37,7 +37,7 @@
                     </tr>
                   </tfoot>
                   <tbody>
-                    <tr *ngFor="let user of users; let i = index">
+                    <tr *ngFor="let user of users |paginate: {id: 'serverPagination', itemsPerPage: pageSize, currentPage: p, totalItems: total }">
                       <td>{{user.first_name}} {{user.last_name}}</td>
                       <td>{{user.email}}</td>
                       <td>
@@ -46,7 +46,7 @@
                         <span class="badge badge-pill badge-warning" *ngIf="user.statusId==2">Inactive</span>
                         <span class="badge badge-pill badge-danger" *ngIf="user.statusId==3">Blocked</span>
                       </td>
-                      <td>{{user.created_at |  date: 'MMM ss, yyyy, hh:mm a z'}}</td>
+                      <td>{{user.created_at |  date: 'MMM dd, yyyy, hh:mm a'}}</td>
                       <td>
                         <a routerLink="/users/edit/{{ user.id }}" class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm mr-1">
                             <i class="fa fa-user-edit text-white-50"></i> Edit
@@ -64,6 +64,26 @@
                     </tr>
                   </tbody>
                 </table>
+
+                <div [ngClass]="{ 'hidden': !loading }" style="display: none;">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="10"
+                      aria-valuemin="0" aria-valuemax="100" style="width:10%"></div>
+                  </div>
+                </div>
+                <br/>
+
+                <pagination-controls id="serverPagination"
+                      (pageChange)="getPage($event)"
+                      maxSize="10"
+                      directionLinks="true"
+                      autoHide="true"
+                      responsive="true"
+                      previousLabel="Previous"
+                      nextLabel="Next"
+                      screenReaderPaginationLabel="Pagination"
+                      screenReaderPageLabel="page"
+                      screenReaderCurrentLabel="You're on page"></pagination-controls>
               </div>
             </div>
           </div>

@@ -19,7 +19,7 @@ import { UserAddComponent } from './user-add/user-add.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { NgxPaginationModule } from 'ngx-pagination';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { ConfirmationDialogService } from './confirmation-dialog/confirmation-dialog.service';
 import { LoadingComponent } from './shared/loading/loading.component';
@@ -46,7 +46,8 @@ import { LoadingComponent } from './shared/loading/loading.component';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    NgbModalModule
+    NgbModalModule,
+    NgxPaginationModule
   ],
   providers: [
     PageService,

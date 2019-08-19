@@ -14,8 +14,8 @@ export class UserService {
     this.apiUrl = this.env.apiUrl + 'user';
   }
 
-  getUsers() {
-    return this.http.get(`${this.apiUrl}`);
+  getUsers(order, orderBy, page = 1, pageSize = 10) {
+    return this.http.get(`${this.apiUrl}?order=${order}&orderBy=${orderBy}&pageSize=${pageSize}&page=${page}`);
   }
 
   getUsersList() {

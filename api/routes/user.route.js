@@ -5,9 +5,16 @@ var mysql = require('../config/mysql');
 
 // Retrieve all users 
 router.get('/', function (req, res) {
-    mysql.query("SELECT users.*, users.status AS statusId, CASE WHEN title = 1 THEN 'Mr.' WHEN title = 2 THEN 'Mrs.' WHEN title = 3 THEN 'Miss.' WHEN title = 4 THEN 'Dr.' ELSE '' END AS title, CASE WHEN status = 1 THEN 'Active' WHEN status = 2 THEN 'Inactive' WHEN status = 0 THEN 'Draft' WHEN status=3 THEN 'Blocked' WHEN status = 4 THEN 'Pending' ELSE '' END AS status FROM users", function (error, results, fields) {
+    let order = req.query.order || 'ASC';
+    let orderBy = req.query.orderBy || 'users.id';
+    if (orderBy == 'users.name') orderBy = "CONCAT(users.first_name, ' ', users.last_name)";
+    let limit = req.query.pageSize ||10;
+    let page = req.query.page || 0;
+    page = page > 0 ? (page - 1) * limit : 0;
+
+    mysql.query(`SELECT users.*, users.status AS statusId, CASE WHEN title = 1 THEN 'Mr.' WHEN title = 2 THEN 'Mrs.' WHEN title = 3 THEN 'Miss.' WHEN title = 4 THEN 'Dr.' ELSE '' END AS title, CASE WHEN status = 1 THEN 'Active' WHEN status = 2 THEN 'Inactive' WHEN status = 0 THEN 'Draft' WHEN status=3 THEN 'Blocked' WHEN status = 4 THEN 'Pending' ELSE '' END AS status FROM users ORDER BY ${orderBy} ${order} LIMIT ${page}, ${limit}`, function (error, results, fields) {
         if (error) throw error;
-        return res.send(results);
+        return res.send({data:results, total:30});
     });
 });
 
