@@ -18,8 +18,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
    - User Edit
    - User Add
    - User Delete
-   - Users Searching, Sorting and Pagination (TODO)
-- WYSIWYG Editors (TODO)
+   - User Sorting and Pagination
+   - Users Searching(TODO)
+- WYSIWYG Editors (TinyMCE)
 - File Management (TODO)
 - Update Password (TODO)
 - Pages Management (TODO)
