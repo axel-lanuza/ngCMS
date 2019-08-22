@@ -10,7 +10,7 @@ export class UserService {
 
   apiUrl = '';
 
-  constructor(private http: HttpClient, private env: EnvService) { 
+  constructor(private http: HttpClient, private env: EnvService) {
     this.apiUrl = this.env.apiUrl + 'user';
   }
 
@@ -29,7 +29,7 @@ export class UserService {
   deleteUser(id) {
     return this.http.delete<any>(`${this.apiUrl}/delete/${id}`);
   }
-  
+
   updateUser(obj, id) {
     return this.http.put<any>(`${this.apiUrl}/${id}`, obj);
   }

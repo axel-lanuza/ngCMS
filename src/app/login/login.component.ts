@@ -5,9 +5,9 @@ import { AppComponent } from '../app.component';
 import { AuthenticationService } from '../services/authentication.service';
 
 @Component({
-  selector: "app-login",
-  templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.css"]
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
@@ -27,8 +27,8 @@ export class LoginComponent implements OnInit {
 
   createForm() {
     this.loginForm = this.fb.group({
-      email: ["", Validators.required],
-      password: ["", Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
 
@@ -41,15 +41,15 @@ export class LoginComponent implements OnInit {
     this.as
       .login(obj)
       .subscribe(res => {
-        if (typeof res != undefined) {
-          if (typeof res.success != undefined && res.success == true) {
+        if (typeof res !== undefined) {
+          if (typeof res.success !== undefined && res.success === true) {
             this.apc.loggedIn = true;
             this.router.navigate(['dashboard']);
           } else {
-            this.openSnackBar(res.msg, "Warning", 2000);
+            this.openSnackBar(res.msg, 'Warning', 2000);
           }
-        } else{
-          this.openSnackBar("Invalid Email/Password", "Warning", 2000);
+        } else {
+          this.openSnackBar('Invalid Email/Password', 'Warning', 2000);
         }
       },
       error => {
@@ -71,6 +71,6 @@ export class LoginComponent implements OnInit {
     this.apc.redirectIfLogin();
 
     // get return url from route parameters or default to '/'
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/';
   }
 }

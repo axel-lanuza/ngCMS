@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { EnvService } from './env.service';
 
 @Injectable({
   providedIn: 'root'
@@ -7,47 +8,33 @@ import { HttpClient } from '@angular/common/http';
 
 export class PageService {
 
-  uri = 'http://localhost:4000/post';
+  apiUrl = '';
 
-  constructor(private http: HttpClient) { }
-
-  addPage(title, category, description) {
-    const obj = {
-      title: title,
-      category: category,
-      description: description,
-    };
-
-    return this.http.post<any>(`${this.uri}/add`, obj);
+  constructor(private http: HttpClient, private env: EnvService) {
+    this.apiUrl = this.env.apiUrl + 'page';
   }
 
-  getPages() {
-    return this
-      .http
-      .get(`${this.uri}`);
+  getPages(order, orderBy, page = 1, pageSize = 10) {
+    return this.http.get(`${this.apiUrl}?order=${order}&orderBy=${orderBy}&pageSize=${pageSize}&page=${page}`);
   }
 
-  editPage(id) {
-    return this
-      .http
-      .get<any>(`${this.uri}/${id}`);
+  getPagesList() {
+    return this.http.get(`${this.apiUrl}/list`);
+  }
+
+  getPage(id) {
+    return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
 
   deletePage(id) {
-    return this
-      .http
-      .delete<any>(`${this.uri}/delete/${id}`);
+    return this.http.delete<any>(`${this.apiUrl}/delete/${id}`);
   }
-  
-  updatePage(title, category, description, id) {
-      const obj = {
-        title: title,
-        category: category,
-        description: description,
-    };
 
-    return this
-      .http
-      .post<any>(`${this.uri}/update/${id}`, obj);
+  updatePage(obj, id) {
+    return this.http.put<any>(`${this.apiUrl}/${id}`, obj);
+  }
+
+  addPage(obj) {
+    return this.http.post<any>(`${this.apiUrl}`, obj);
   }
 }

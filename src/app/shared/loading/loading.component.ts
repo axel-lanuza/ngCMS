@@ -11,8 +11,7 @@ export class LoadingComponent implements OnInit {
   constructor(private location: Location) { }
 
   ngOnInit() {
-    console.log("Loading..");
+    console.log('Loading..');
     this.location.back();
   }
-
 }

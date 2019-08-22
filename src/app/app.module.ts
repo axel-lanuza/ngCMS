@@ -23,6 +23,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ConfirmationDialogComponent } from './confirmation-dialog/confirmation-dialog.component';
 import { ConfirmationDialogService } from './confirmation-dialog/confirmation-dialog.service';
 import { LoadingComponent } from './shared/loading/loading.component';
+import { EditorModule } from '@tinymce/tinymce-angular';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { LoadingComponent } from './shared/loading/loading.component';
     AppRoutingModule,
     ReactiveFormsModule,
     NgbModalModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    EditorModule,
+    FormsModule
   ],
   providers: [
     PageService,

@@ -39,8 +39,22 @@
                 <td>{{user.status}}</td>
             </tr>
             <tr>  
+                <th>Phone</th>
+                <td>{{user.phone}}</td>
+            </tr>
+            <tr>  
+                <th>Details</th>
+                <td>
+                    <div class="htmlPreview" [innerHTML]="user.details"></div>
+                </td>
+            </tr>
+            <tr>  
                 <th>Added On</th>
-                <td>{{user.created_at |  date: 'MMM ss, yyyy, hh:mm a z'}}</td>
+                <td>{{user.created_at |  date: 'MMM dd, yyyy, hh:mm a'}}</td>
+            </tr>
+            <tr>  
+                <th>Updated On</th>
+                <td>{{user.updated_at |  date: 'MMM dd, yyyy, hh:mm a'}}</td>
             </tr>
         </table>
         </div>

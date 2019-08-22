@@ -51,7 +51,8 @@ router.post('/', function (req, res) {
         last_name: req.body.last_name,
         email: req.body.email,
         password: hashedPassword,
-        phone: '',
+        phone: req.body.phone,
+        details: req.body.details,
         status: req.body.status,
         created_at: new Date()
     };
@@ -82,7 +83,9 @@ router.put('/:id', function (req, res) {
         last_name: req.body.last_name,
         email: req.body.email,
         status: req.body.status,
-        phone: req.body.phone
+        phone: req.body.phone,
+        details: req.body.details,
+        updated_at: new Date()
     };
 
     mysql.query("UPDATE users SET ? WHERE id = ?", [userObj, id], function (error, results, fields) {

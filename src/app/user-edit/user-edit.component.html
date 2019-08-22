@@ -95,6 +95,42 @@
                 </div>
             </div>
             
+            <div class="form-group row">
+                <label for="phone" class="col-3 col-form-label">Phone</label>
+                <div class="col-9">
+                    <input type="text" class="form-control " placeholder="Phone" formControlName="phone" #phone>
+                    <div class="invalid-feedback"
+                        *ngIf="userForm.controls['phone'].invalid && (userForm.controls['phone'].dirty || userForm.controls['phone'].touched)">
+                        <span>
+                            Phone is invalid.
+                        </span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group row">
+                <label for="details" class="col-3 col-form-label">Details</label>
+                <div class="col-9">
+                    <editor id="details" name="details" apiKey="jdnweosayjp4qrtx2us0pc9iubhypor5c3wwp35lzg70lcmw"
+                            [init]="{
+                            plugins: 'print preview powerpaste casechange importcss tinydrive searchreplace autolink autosave save directionality advcode visualblocks visualchars fullscreen image link media mediaembed template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists checklist wordcount tinymcespellchecker a11ychecker imagetools textpattern noneditable help formatpainter permanentpen pageembed charmap mentions quickbars linkchecker emoticons',
+                            tinydrive_demo_files_url: '/docs/demo/tiny-drive-demo/demo_files.json',
+                            tinydrive_dropbox_app_key: 'jee1s9eykoh752j',
+                            tinydrive_google_drive_key: 'AIzaSyAsVRuCBc-BLQ1xNKtnLHB3AeoK-xmOrTc',
+                            tinydrive_google_drive_client_id: '748627179519-p9vv3va1mppc66fikai92b3ru73mpukf.apps.googleusercontent.com',
+                            menubar: 'file edit view insert format tools table tc help',
+                            toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | a11ycheck ltr rtl | showcomments addcomment',
+                            height: 400,
+                            autosave_ask_before_unload: true,
+                            autosave_interval: '30s',
+                            autosave_prefix: '{path}{query}-{id}-',
+                            autosave_restore_when_empty: false,
+                            autosave_retention: '2m',
+                            image_advtab: true
+                            }" formControlName="details" #details></editor>
+                </div>
+            </div>
+
             <div class="form-group row justify-content-center">
                 <div class="col-8 offset-2">
                 <button class="btn btn-primary" type="submit" [disabled]="userForm.invalid"> <i class="fa fa-save"></i> Save </button>

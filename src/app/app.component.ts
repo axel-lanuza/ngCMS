@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Location } from '@angular/common';
-import { Title } from "@angular/platform-browser";
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { EnvService } from './services/env.service';
 import { CommonService } from './services/common.service';
@@ -40,14 +40,14 @@ export class AppComponent implements OnInit {
 
   createForm() {
     this.searchForm = this.fb.group({
-      email: ["", Validators.required],
-      password: ["", Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
   createFormXS() {
     this.searchFormXS = this.fb.group({
-      email: ["", Validators.required],
-      password: ["", Validators.required],
+      email: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
 
@@ -74,22 +74,21 @@ export class AppComponent implements OnInit {
   confirmModal(resource: string, id: number, returnUrl: string, title: string, msg: string): void {
     this.confirmationDialogService.confirm(title, msg)
       .then((confirmed) => {
-          if(confirmed === true ){
+          if (confirmed === true ) {
             this.cs.deleteRow(id, resource).subscribe(res => {
-              if (typeof res != undefined && res != '') {
+              if (typeof res !== undefined && res !== '') {
                 this.router.navigate([returnUrl]);
               }
             });
           }
       } )
       .catch(() => {
-
       });
   }
 
   goBack(url) {
-    if (url == '') {
-      if (document.referrer == '') {
+    if (url === '') {
+      if (document.referrer === '') {
         this.router.navigate(['/']);
       } else {
         this.location.back();

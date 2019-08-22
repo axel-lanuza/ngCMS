@@ -21,7 +21,7 @@
                 </div>
                 <div class="form-group row">
                     <label for="title" class="col-3 col-form-label">Title</label>
-                    <div class="col-8">
+                    <div class="col-9">
                         <select class="form-control" formControlName="title" #title>
                             <option value="">-- Select --</option>
                             <option value="1">Mr.</option>
@@ -39,7 +39,7 @@
                 
                 <div class="form-group row">
                     <label for="first_name" class="col-3 col-form-label">First Name</label>
-                    <div class="col-8">
+                    <div class="col-9">
                         <input type="text" class="form-control " placeholder="First Name" formControlName="first_name" #first_name>
                         <div class="invalid-feedback" *ngIf="userForm.controls['first_name'].invalid && (userForm.controls['first_name'].dirty || userForm.controls['first_name'].touched)">
                             <span *ngIf="userForm.controls['first_name'].errors.required">
@@ -51,7 +51,7 @@
                 
                 <div class="form-group row">
                     <label for="last_name" class="col-3 col-form-label">Last Name</label>
-                    <div class="col-8">
+                    <div class="col-9">
                         <input type="text" class="form-control " placeholder="Last Name" formControlName="last_name" #last_name>
                         <div class="invalid-feedback" *ngIf="userForm.controls['last_name'].invalid && (userForm.controls['last_name'].dirty || userForm.controls['last_name'].touched)">
                             <span *ngIf="userForm.controls['last_name'].errors.required">
@@ -60,9 +60,10 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="form-group row">
                     <label for="email" class="col-3 col-form-label">Email</label>
-                    <div class="col-8">
+                    <div class="col-9">
                             <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="Enter Email Address" formControlName="email" #email>
                         <div class="invalid-feedback" *ngIf="userForm.controls['email'].invalid && (userForm.controls['email'].dirty || userForm.controls['email'].touched)">
                             <span *ngIf="userForm.controls['email'].errors.required">
@@ -73,7 +74,7 @@
                 </div>
                 <div class="form-group row">
                     <label for="password" class="col-3 col-form-label">Password</label>
-                    <div class="col-8">
+                    <div class="col-9">
                         <div class="input-group">
                             <input type="password" class="form-control" placeholder="Enter Password" formControlName="password" #password [type]="hide ? 'password' : 'text'">
                             <div class="input-group-append">
@@ -92,7 +93,7 @@
             
                 <div class="form-group row">
                     <label for="confirmPassword" class="col-3 col-form-label">Confirm Password</label>
-                    <div class="col-8">
+                    <div class="col-9">
                     <div class="input-group">
                             <input type="password" class="form-control" placeholder="Enter Confirm Password" formControlName="confirmPassword" #confirmPassword [type]="hideCon ? 'password' : 'text'">
                             <div class="input-group-append">
@@ -111,7 +112,7 @@
                 
                 <div class="form-group row">
                     <label for="status" class="col-3 col-form-label">Status</label>
-                    <div class="col-8">
+                    <div class="col-9">
                         <select class="form-control" formControlName="status" #status>
                             <option value="">-- Select --</option>
                             <option value="1" selected>Active</option>
@@ -126,8 +127,43 @@
                     </div>
                 </div>
 
+                <div class="form-group row">
+                    <label for="phone" class="col-3 col-form-label">Phone</label>
+                    <div class="col-9">
+                        <input type="text" class="form-control " placeholder="Phone" formControlName="phone" #phone>
+                        <div class="invalid-feedback"
+                            *ngIf="userForm.controls['phone'].invalid && (userForm.controls['phone'].dirty || userForm.controls['phone'].touched)">
+                            <span>
+                                Phone is invalid.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="details" class="col-3 col-form-label">Details</label>
+                    <div class="col-9">
+                        <editor id="details" name="details" apiKey="jdnweosayjp4qrtx2us0pc9iubhypor5c3wwp35lzg70lcmw" [init]="{
+                        plugins: 'print preview powerpaste casechange importcss tinydrive searchreplace autolink autosave save directionality advcode visualblocks visualchars fullscreen image link media mediaembed template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists checklist wordcount tinymcespellchecker a11ychecker imagetools textpattern noneditable help formatpainter permanentpen pageembed charmap mentions quickbars linkchecker emoticons',
+                        tinydrive_demo_files_url: '/docs/demo/tiny-drive-demo/demo_files.json',
+                        tinydrive_dropbox_app_key: 'jee1s9eykoh752j',
+                        tinydrive_google_drive_key: 'AIzaSyAsVRuCBc-BLQ1xNKtnLHB3AeoK-xmOrTc',
+                        tinydrive_google_drive_client_id: '748627179519-p9vv3va1mppc66fikai92b3ru73mpukf.apps.googleusercontent.com',
+                        menubar: 'file edit view insert format tools table tc help',
+                        toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | a11ycheck ltr rtl | showcomments addcomment',
+                        height: 400,
+                        autosave_ask_before_unload: true,
+                        autosave_interval: '30s',
+                        autosave_prefix: '{path}{query}-{id}-',
+                        autosave_restore_when_empty: false,
+                        autosave_retention: '2m',
+                        image_advtab: true
+                        }" formControlName="details" #details></editor>
+                    </div>
+                </div>
+                
                 <div class="form-group row justify-content-center">
-                    <div class="col-8 offset-2">
+                    <div class="col-9 offset-2">
                     <button class="btn btn-primary" type="submit" [disabled]="userForm.invalid"> 
                         <i class="fa fa-save"></i> Save </button>
                     </div>

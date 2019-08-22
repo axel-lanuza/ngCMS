@@ -12,36 +12,44 @@ import { UserService } from '../services/user.service';
 export class UserEditComponent implements OnInit {
   user: any = {};
   userForm: FormGroup;
-  constructor(private us: UserService, private router: Router, private route: ActivatedRoute, private fb: FormBuilder, private apc: AppComponent) {
+  constructor(private us: UserService,
+              private router: Router,
+              private route: ActivatedRoute,
+              private fb: FormBuilder,
+              private apc: AppComponent) {
     this.createForm();
    }
 
   public getUser = () => {
     this.route.params.subscribe(params => {
-      this.us.getUser(params['id']).subscribe(res => {
-        let data = res;
+      this.us.getUser(params.id).subscribe(res => {
+        const data = res;
         this.user = data;
         this.userForm.get('title').setValue(data.titleId);
         this.userForm.get('first_name').setValue(data.first_name);
         this.userForm.get('last_name').setValue(data.last_name);
         this.userForm.get('email').setValue(data.email);
         this.userForm.get('status').setValue(data.statusId);
+        this.userForm.get('phone').setValue(data.phone);
+        this.userForm.get('details').setValue(data.details);
       });
     });
-  };
+  }
 
   createForm() {
     this.userForm = this.fb.group(
       {
-        title: ["", Validators.required],
-        first_name: ["", Validators.required],
-        last_name: ["", Validators.required],
+        title: ['', Validators.required],
+        first_name: ['', Validators.required],
+        last_name: ['', Validators.required],
         email: ['', [Validators.required, Validators.email]],
         status: ['', [Validators.required]],
+        phone: ['', [Validators.minLength(10), Validators.maxLength(10), Validators.pattern('[0-9]+')]],
+        details: [''],
       });
   }
 
-  confirmModal(resource, id, returnUrl, title, msg){
+  confirmModal(resource, id, returnUrl, title, msg) {
     this.apc.confirmModal(resource, id, returnUrl, title, msg);
   }
 
@@ -53,20 +61,21 @@ export class UserEditComponent implements OnInit {
       last_name: this.userForm.get('last_name').value,
       email: this.userForm.get('email').value,
       status: this.userForm.get('status').value,
-      phone: '',
+      phone: this.userForm.get('phone').value,
+      details: this.userForm.get('details').value,
     };
 
     this.us
-      .updateUser(obj, params['id'])
+      .updateUser(obj, params.id)
       .subscribe(res => {
-        if (typeof res != undefined) {
-          if (typeof res.error != undefined && res.error == false) {
+        if (typeof res !== undefined) {
+          if (typeof res.error !== undefined && res.error === false) {
             this.router.navigate(['users']);
           } else {
-            this.openSnackBar(res.msg, "Error", 2000);
+            this.openSnackBar(res.msg, 'Error', 2000);
           }
         } else {
-          console.log("err");
+          console.log('err');
         }
       });
     });

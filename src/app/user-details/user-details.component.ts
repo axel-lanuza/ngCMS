@@ -14,11 +14,11 @@ export class UserDetailsComponent implements OnInit {
 
   public getUser = () => {
     this.route.params.subscribe(params => {
-      this.us.getUser(params['id']).subscribe(res => {
+      this.us.getUser(params.id).subscribe(res => {
         this.user = res;
       });
     });
-  };
+  }
 
   confirmModal(resource, id, returnUrl, title, msg){
     this.apc.confirmModal(resource, id, returnUrl, title, msg);

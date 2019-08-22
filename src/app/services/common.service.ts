@@ -11,12 +11,12 @@ export class CommonService {
 
   apiUrl = '';
 
-  constructor(private http: HttpClient, private env: EnvService) { 
+  constructor(private http: HttpClient, private env: EnvService) {
     this.apiUrl = this.env.apiUrl;
   }
 
   deleteRow(id, url) {
     return this.http.delete(`${this.apiUrl}${url}/${id}`);
   }
-  
+
 }
